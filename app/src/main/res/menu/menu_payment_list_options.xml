@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_payment_method_editor"
+        android:title="Adicionar"
+        android:icon="@drawable/ic_round_add_24"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="always"/>
+</menu>

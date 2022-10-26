@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/medium"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_payment_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView4"
+            style="@style/Text.18.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$ "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_payment_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_payment_value"
+            style="@style/Text.18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="19,99"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView4"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView4"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular"
+            android:text="Pago em "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Text.Bold"
+            android:id="@+id/tv_paid_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24/12"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView3"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView3" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b_delete"
+                style="@style/DangerButton"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/small"
+                android:text="Excluir" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b_edit"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
