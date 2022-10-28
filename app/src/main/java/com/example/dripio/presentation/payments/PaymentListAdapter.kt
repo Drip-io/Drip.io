@@ -18,7 +18,6 @@ class PaymentListAdapter(private val context: Context, val callback: Callback) :
             field = value
         }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentViewHolder {
         val view = ViewPaymentItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return PaymentViewHolder(view.root, callback)

@@ -3,14 +3,11 @@ package com.example.dripio.presentation.payments
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentsBinding
 import com.example.dripio.domain.entity.Payment
 import com.example.dripio.extensions.formatToMonthYear
-import com.example.dripio.extensions.month
 import com.example.dripio.extensions.toMoneyStringWithComma
-import com.example.dripio.extensions.year
-import com.example.dripio.presentation._base.startPaymentEditor
+import com.example.dripio.presentation.base.startPaymentEditor
 import com.example.dripio.presentation.bottomSheet.PaymentDetailBottomSheet
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -48,7 +45,7 @@ class PaymentsActivity : AppCompatActivity(), PaymentListAdapter.Callback {
         }
 
         viewModel.loading.observe(this) {
-            //binding.viewLoading.root.visibleOrGone(it)
+            // binding.viewLoading.root.visibleOrGone(it)
         }
     }
 

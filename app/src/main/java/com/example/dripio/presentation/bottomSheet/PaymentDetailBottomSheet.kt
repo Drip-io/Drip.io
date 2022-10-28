@@ -12,7 +12,6 @@ import com.example.dripio.extensions.toMoneyStringWithComma
 import com.example.dripio.presentation.payments.PaymentsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import java.text.SimpleDateFormat
 
 class PaymentDetailBottomSheet(private val payment: Payment) : BottomSheetDialogFragment() {
 

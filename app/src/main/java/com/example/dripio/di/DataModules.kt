@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val dataModules = module {
     single { AppDatabase.create(androidContext()) }
 
-    factory <PaymentRepository> { PaymentRepositoryImpl(get()) }
+    factory<PaymentRepository> { PaymentRepositoryImpl(get()) }
 }

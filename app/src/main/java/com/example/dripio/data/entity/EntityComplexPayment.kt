@@ -21,7 +21,7 @@ data class EntityComplexPayment(
         parentColumn = "category",
         entityColumn = "category_id"
     )
-    val category: EntityCategory?,
+    val category: EntityCategory?
 )
 
 fun EntityComplexPayment.toDomain() = Payment(

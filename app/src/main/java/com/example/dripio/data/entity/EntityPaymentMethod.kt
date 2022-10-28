@@ -2,14 +2,14 @@ package com.example.dripio.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.dripio.domain.entity.PaymentMethod
-import com.example.dripio.extensions.toDate
 
 @Entity
 data class EntityPaymentMethod(
-    @PrimaryKey @ColumnInfo(name = "payment_method_id") var id: Long? = null,
+    @PrimaryKey
+    @ColumnInfo(name = "payment_method_id")
+    var id: Long? = null,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "color") var color: String
 )

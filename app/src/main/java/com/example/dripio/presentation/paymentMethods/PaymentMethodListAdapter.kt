@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.dripio.databinding.ViewPaymentMethodItemBinding
 import com.example.dripio.domain.entity.PaymentMethod
-import com.example.dripio.presentation._base.BaseAdapter
+import com.example.dripio.presentation.base.BaseAdapter
 
 class PaymentMethodListAdapter(private val context: Context) : BaseAdapter<PaymentMethod, PaymentMethodListAdapter.AdapterViewHolder>() {
 

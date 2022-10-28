@@ -7,7 +7,7 @@ import com.example.dripio.domain.entity.Expense
 import com.example.dripio.domain.entity.Payment
 import com.example.dripio.domain.entity.PaymentMethod
 import com.example.dripio.domain.repository.api.PaymentRepository
-import com.example.dripio.presentation._base.vm.BaseViewModel
+import com.example.dripio.presentation.base.vm.BaseViewModel
 import java.util.*
 
 class PaymentEditorViewModel(private val paymentRepository: PaymentRepository) : BaseViewModel() {
@@ -50,15 +50,15 @@ class PaymentEditorViewModel(private val paymentRepository: PaymentRepository) :
     fun updatePayment(name: String? = null, expense: Expense? = null, paymentValue: Float? = null, paymentMethod: PaymentMethod? = null, category: Category? = null, paidDate: Date? = null) {
         launch {
             val payment = payment.value
-            if(payment != null) {
+            if (payment != null) {
                 var lastPayment: Payment = payment
 
-                if(name != null) lastPayment = lastPayment.copy(name = name)
-                if(expense != null) lastPayment = lastPayment.copy(expense = expense)
-                if(paymentValue != null) lastPayment = lastPayment.copy(paymentValue = paymentValue)
-                if(paymentMethod != null) lastPayment = lastPayment.copy(paymentMethod = paymentMethod)
-                if(category != null) lastPayment = lastPayment.copy(category = category)
-                if(paidDate != null) lastPayment = lastPayment.copy(paidAt = paidDate)
+                if (name != null) lastPayment = lastPayment.copy(name = name)
+                if (expense != null) lastPayment = lastPayment.copy(expense = expense)
+                if (paymentValue != null) lastPayment = lastPayment.copy(paymentValue = paymentValue)
+                if (paymentMethod != null) lastPayment = lastPayment.copy(paymentMethod = paymentMethod)
+                if (category != null) lastPayment = lastPayment.copy(category = category)
+                if (paidDate != null) lastPayment = lastPayment.copy(paidAt = paidDate)
                 lastPayment = lastPayment.copy(updatedAt = Date())
                 paymentRepository.update(lastPayment)
             }

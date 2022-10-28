@@ -1,14 +1,12 @@
 package com.example.dripio.data.dao
 
-import androidx.room.*
-import androidx.room.OnConflictStrategy.IGNORE
-import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Transaction
 import com.example.dripio.data.entity.EntityComplexPayment
 import com.example.dripio.data.entity.EntityPayment
-import com.example.dripio.domain.entity.Category
-import com.example.dripio.domain.entity.Expense
-import com.example.dripio.domain.entity.PaymentMethod
-import java.util.*
 
 @Dao
 interface PaymentDataAccessObject {
@@ -38,5 +36,14 @@ interface PaymentDataAccessObject {
 //    fun update(entityPayment: EntityPayment)
 
     @Query("UPDATE EntityPayment SET name=:name, expense=:expenseId, payment_value=:paymentValue, payment_method=:paymentMethodId, category=:categoryId, paid_at=:paidDate, updated_at=:updatedAt WHERE payment_id=:id")
-    fun update(id: Long, name: String, expenseId: Long?, paymentValue: Float, paymentMethodId: Long?, categoryId: Long?, paidDate: Long, updatedAt: Long)
+    fun update(
+        id: Long,
+        name: String,
+        expenseId: Long?,
+        paymentValue: Float,
+        paymentMethodId: Long?,
+        categoryId: Long?,
+        paidDate: Long,
+        updatedAt: Long
+    )
 }

@@ -3,10 +3,9 @@ package com.example.dripio.extensions
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 
 fun View.visibleOrGone(visible: Boolean) {
-    if(visible) {
+    if (visible) {
         this.visibility = View.VISIBLE
     } else {
         this.visibility = View.GONE

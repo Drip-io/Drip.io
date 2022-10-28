@@ -1,16 +1,15 @@
-package com.example.dripio.presentation._base
+package com.example.dripio.presentation.base
 
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseAdapter<Domain, VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
 
     private var data = listOf<Domain>()
-    set(value) {
-        notifyDataSetChanged()
-        field = value
-    }
+        set(value) {
+            notifyDataSetChanged()
+            field = value
+        }
 
     val items: List<Domain> get() { return data }
 

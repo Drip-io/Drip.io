@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dripio.databinding.FragmentPaymentMethodListBinding
 import com.example.dripio.extensions.visibleOrGone
@@ -17,7 +16,8 @@ class PaymentMethodListFragment : Fragment() {
     private val viewModel: PaymentMethodsViewModel by sharedViewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPaymentMethodListBinding.inflate(inflater)
@@ -33,7 +33,7 @@ class PaymentMethodListFragment : Fragment() {
 
     private fun initObservers() {
         viewModel.paymentMethods.observe(viewLifecycleOwner) {
-            if(it.isNotEmpty()) {
+            if (it.isNotEmpty()) {
                 adapter.setItems(it)
             }
 
@@ -42,7 +42,6 @@ class PaymentMethodListFragment : Fragment() {
     }
 
     private fun initViewModel() {
-
     }
 
     private fun initViews() {

@@ -7,7 +7,9 @@ import com.example.dripio.domain.entity.Expense
 
 @Entity
 data class EntityExpense(
-    @PrimaryKey @ColumnInfo(name = "expense_id") var id: Long? = null,
+    @PrimaryKey
+    @ColumnInfo(name = "expense_id")
+    var id: Long? = null,
     @ColumnInfo(name = "name") var name: String
 )
 

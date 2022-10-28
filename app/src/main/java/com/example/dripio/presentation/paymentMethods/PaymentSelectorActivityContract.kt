@@ -3,9 +3,7 @@ package com.example.dripio.presentation.paymentMethods
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import com.example.dripio.domain.entity.PaymentMethod
 
-const val PAYMENT = "PAYMENT"
 class PaymentSelectorActivityContract : ActivityResultContract<Unit, Long?>() {
     override fun createIntent(context: Context, input: Unit): Intent = Intent(context, PaymentMethodsHostActivity::class.java)
 

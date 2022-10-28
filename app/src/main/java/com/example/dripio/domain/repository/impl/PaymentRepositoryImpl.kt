@@ -22,17 +22,19 @@ class PaymentRepositoryImpl(private val appDatabase: AppDatabase) : PaymentRepos
         categoryId: Long?,
         paidDate: Date
     ) {
-        appDatabase.paymentsDataAccessObject().add(EntityPayment(
-            id = null,
-            name = name,
-            paymentValue = paymentValue,
-            expenseId = expenseId,
-            paymentMethodId = paymentMethodId,
-            categoryId = categoryId,
-            updatedAt = System.currentTimeMillis(),
-            createdAt = System.currentTimeMillis(),
-            paidAt = paidDate.time
-        ))
+        appDatabase.paymentsDataAccessObject().add(
+            EntityPayment(
+                id = null,
+                name = name,
+                paymentValue = paymentValue,
+                expenseId = expenseId,
+                paymentMethodId = paymentMethodId,
+                categoryId = categoryId,
+                updatedAt = System.currentTimeMillis(),
+                createdAt = System.currentTimeMillis(),
+                paidAt = paidDate.time
+            )
+        )
     }
 
     override suspend fun add(domain: Payment) {

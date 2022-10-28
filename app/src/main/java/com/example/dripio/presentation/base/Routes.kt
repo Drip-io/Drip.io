@@ -1,4 +1,4 @@
-package com.example.dripio.presentation._base
+package com.example.dripio.presentation.base
 
 import android.content.Context
 import android.content.Intent
@@ -10,10 +10,5 @@ const val PAYMENT_ID = "PAYMENT_ID"
 fun Context.startPaymentEditor(paymentId: Long? = null) {
     val intent = Intent(this, PaymentEditorActivity::class.java)
     paymentId?.let { intent.putExtra(PAYMENT_ID, it) }
-    startActivity(intent)
-}
-
-fun Context.startPaymentMethodList() {
-    val intent = Intent(this, PaymentMethodsHostActivity::class.java)
     startActivity(intent)
 }

@@ -1,6 +1,5 @@
 package com.example.dripio.domain.entity
 
-import androidx.room.ColumnInfo
 import com.example.dripio.data.entity.EntityPayment
 import java.util.*
 
@@ -13,7 +12,7 @@ data class Payment(
     var category: Category?,
     var paidAt: Date,
     var createdAt: Date,
-    var updatedAt: Date,
+    var updatedAt: Date
 )
 
 fun Payment.toEntity() = EntityPayment(

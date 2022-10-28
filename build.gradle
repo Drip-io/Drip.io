@@ -3,8 +3,25 @@ plugins {
     id 'com.android.application' version '7.3.0' apply false
     id 'com.android.library' version '7.3.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    id 'com.diffplug.spotless' version "6.11.0"
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+spotless { // if you are using build.gradle.kts, instead of 'spotless {' use:
+    format 'misc', {
+        // define the files to apply `misc` to
+        target '**/*.gradle', '**/*.md', '**/.gitignore'
+
+        // define the steps to apply to those files
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    kotlin {
+        target '**/*.kt'
+        ktlint()
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
 }

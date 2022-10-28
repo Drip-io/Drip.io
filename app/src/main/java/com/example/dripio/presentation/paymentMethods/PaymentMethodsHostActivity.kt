@@ -1,16 +1,10 @@
 package com.example.dripio.presentation.paymentMethods
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import android.view.MenuItem.OnMenuItemClickListener
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentMethodsBinding
 

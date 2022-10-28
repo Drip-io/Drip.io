@@ -6,7 +6,7 @@ import com.example.dripio.domain.entity.Payment
 import com.example.dripio.domain.repository.api.PaymentRepository
 import com.example.dripio.extensions.setDayMonthTo
 import com.example.dripio.extensions.toCalendar
-import com.example.dripio.presentation._base.vm.BaseViewModel
+import com.example.dripio.presentation.base.vm.BaseViewModel
 import java.util.*
 
 class PaymentsViewModel(private val paymentRepository: PaymentRepository) : BaseViewModel() {

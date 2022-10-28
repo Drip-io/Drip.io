@@ -1,4 +1,4 @@
-package com.example.dripio.presentation._base.vm
+package com.example.dripio.presentation.base.vm
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -17,7 +17,7 @@ open class BaseViewModel : ViewModel() {
             try {
                 block.invoke()
                 _loading.postValue(true)
-            } catch(ex: Throwable) {
+            } catch (ex: Throwable) {
                 Log.e("BASE_VIEW_MODEL_ERROR", ex.toString())
                 errorBlock?.invoke(ex)
                 _loading.postValue(true)

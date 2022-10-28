@@ -8,9 +8,6 @@ fun Date.toCalendar(): Calendar {
     return calendar
 }
 
-fun Date.month(): Int = this.toCalendar()[Calendar.MONTH]
-fun Date.year(): Int = this.toCalendar()[Calendar.YEAR]
-
 fun Date.setDayMonthTo(dayMonth: Int): Date {
     val calendar = this.toCalendar()
     calendar.set(Calendar.DAY_OF_MONTH, dayMonth)

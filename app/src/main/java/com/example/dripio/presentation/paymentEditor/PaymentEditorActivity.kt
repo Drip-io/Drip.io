@@ -1,9 +1,6 @@
 package com.example.dripio.presentation.paymentEditor
 
-import android.content.Context
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentEditorBinding
@@ -11,7 +8,7 @@ import com.example.dripio.extensions.closeKeyboard
 import com.example.dripio.extensions.setText
 import com.example.dripio.extensions.toCalendar
 import com.example.dripio.extensions.toMoneyStringWithPeriod
-import com.example.dripio.presentation._base.PAYMENT_ID
+import com.example.dripio.presentation.base.PAYMENT_ID
 import com.example.dripio.presentation.paymentMethods.PaymentSelectorActivityContract
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -34,7 +31,6 @@ class PaymentEditorActivity : AppCompatActivity() {
     }
 
     val paymentSelectorResult = registerForActivityResult(PaymentSelectorActivityContract()) {
-
     }
 
     private fun initObservers() {
@@ -92,7 +88,6 @@ class PaymentEditorActivity : AppCompatActivity() {
             }
         }
 
-
         initSaveButton()
 
         binding.tvSelectPaymentMethod.setOnClickListener {
@@ -109,7 +104,6 @@ class PaymentEditorActivity : AppCompatActivity() {
     }
 
     private fun initSaveButton() {
-
         binding.bSave.text =
             if (isEditorMode()) getString(R.string.save) else getString(R.string.register)
 
@@ -183,6 +177,5 @@ class PaymentEditorActivity : AppCompatActivity() {
             clearDateFieldFocus()
         }
         builtDatePicker.show(supportFragmentManager, "datePicker")
-
     }
 }
