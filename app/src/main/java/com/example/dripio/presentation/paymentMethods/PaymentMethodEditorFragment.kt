@@ -1,61 +1,55 @@
 package com.example.dripio.presentation.paymentMethods
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.dripio.R
+import com.example.dripio.R.layout.fragment_payment_method_editor
+import com.example.dripio.databinding.FragmentPaymentMethodEditorBinding
+import com.example.dripio.presentation.base.ColorPickerDialog
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PaymentMethodEditorFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PaymentMethodEditorFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val viewModel: PaymentMethodsViewModel by sharedViewModel()
+    private lateinit var binding: FragmentPaymentMethodEditorBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment_method_editor, container, false)
+    ): View {
+        binding = FragmentPaymentMethodEditorBinding.inflate(inflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PaymentMethodEditorFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PaymentMethodEditorFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        initObservers()
+    }
+
+    private fun initViews() {
+        binding.boxColor.setOnClickListener {
+            val initialColor = Color.parseColor(viewModel.selectedColor.value) ?: 0
+            context?.let { context -> ColorPickerDialog.show(context, initialColor) { r, g, b ->
+                val hexColor = String.format("#%02x%02x%02x", r, g, b)
+                viewModel.setSelectedColor(hexColor)
+            } }
+        }
+    }
+
+    private fun initObservers() {
+        viewModel.selectedColor.observe(viewLifecycleOwner) {
+            setColor(it)
+        }
+    }
+
+    private fun setColor(color: String) {
+        binding.tvColor.text = color
+        binding.ivColor.setColorFilter(Color.parseColor(color))
     }
 }
