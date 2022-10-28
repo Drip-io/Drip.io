@@ -3,7 +3,6 @@ package com.example.dripio.presentation.base
 import android.content.Context
 import android.content.Intent
 import com.example.dripio.presentation.paymentEditor.PaymentEditorActivity
-import com.example.dripio.presentation.paymentMethods.PaymentMethodsHostActivity
 
 const val PAYMENT_ID = "PAYMENT_ID"
 
