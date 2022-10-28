@@ -7,7 +7,7 @@
     tools:context=".presentation.paymentMethods.PaymentMethodEditorFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/ti_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,34 +22,14 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/box_color"
+    <include
+        android:id="@+id/color_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/medium"
         android:layout_marginHorizontal="@dimen/medium"
-        android:background="@drawable/round_rect"
-        android:backgroundTint="@color/dirt_white"
-        android:padding="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_color"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/circle" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_color"
-            style="@style/Text.14.Bold"
-            android:textColor="?attr/colorSurface"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/regular"
-            tools:text="#FF0000"/>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        layout="@layout/view_color_card"
+        app:layout_constraintTop_toBottomOf="@+id/ti_name" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b_save"

@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dripio.databinding.FragmentPaymentMethodListBinding
+import com.example.dripio.domain.entity.PaymentMethod
 import com.example.dripio.extensions.visibleOrGone
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class PaymentMethodListFragment : Fragment() {
+class PaymentMethodListFragment : Fragment(), PaymentMethodListAdapter.Callback {
     private lateinit var binding: FragmentPaymentMethodListBinding
     private lateinit var adapter: PaymentMethodListAdapter
     private val viewModel: PaymentMethodsViewModel by sharedViewModel()
@@ -42,6 +43,7 @@ class PaymentMethodListFragment : Fragment() {
     }
 
     private fun initViewModel() {
+        viewModel.fetchPaymentMethods()
     }
 
     private fun initViews() {
@@ -52,7 +54,11 @@ class PaymentMethodListFragment : Fragment() {
 
     private fun initAdapter() {
         context?.let { context ->
-            adapter = PaymentMethodListAdapter(context)
+            adapter = PaymentMethodListAdapter(context, this@PaymentMethodListFragment)
         }
+    }
+
+    override fun clickItem(paymentMethod: PaymentMethod) {
+        (requireActivity() as? PaymentMethodsHostActivity)?.finishWithResult(paymentMethod.id)
     }
 }

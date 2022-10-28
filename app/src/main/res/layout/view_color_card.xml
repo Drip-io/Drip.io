@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/round_rect"
+    android:backgroundTint="@color/dirt_white">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_color"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/circle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_color"
+        style="@style/Text.14.Bold"
+        android:layout_weight="1"
+        android:textColor="?attr/colorSurface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/regular"
+        tools:text="#FF0000"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_close"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:tint="?attr/colorSurface"
+        android:src="@drawable/ic_round_close_24"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

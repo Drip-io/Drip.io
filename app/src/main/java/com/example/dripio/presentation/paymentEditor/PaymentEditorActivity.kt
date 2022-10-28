@@ -1,10 +1,13 @@
 package com.example.dripio.presentation.paymentEditor
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentEditorBinding
+import com.example.dripio.domain.entity.PaymentMethod
 import com.example.dripio.extensions.closeKeyboard
+import com.example.dripio.extensions.formatToDayMonthYear
 import com.example.dripio.extensions.setText
 import com.example.dripio.extensions.toCalendar
 import com.example.dripio.extensions.toMoneyStringWithPeriod
@@ -30,15 +33,21 @@ class PaymentEditorActivity : AppCompatActivity() {
         }
     }
 
-    val paymentSelectorResult = registerForActivityResult(PaymentSelectorActivityContract()) {
+    private val paymentSelectorResult = registerForActivityResult(PaymentSelectorActivityContract()) { paymentMethodId ->
+        paymentMethodId?.let {
+            viewModel.fetchPaymentMethod(it)
+        }
     }
 
     private fun initObservers() {
         viewModel.payment.observe(this) { payment ->
-            payment?.let {
-                binding.tiName.editText?.editableText?.setText(it.name)
+            payment?.let { payment ->
+                binding.tiName.editText?.editableText?.setText(payment.name)
                 viewModel.selectDate(payment.paidAt)
                 viewModel.selectValue(payment.paymentValue)
+                payment.paymentMethod?.let { paymentMethod ->
+                    setViewFlipperToColorCard(paymentMethod)
+                }
             }
         }
 
@@ -51,15 +60,28 @@ class PaymentEditorActivity : AppCompatActivity() {
         }
 
         viewModel.selectedDate.observe(this) {
-            val calendar = it.toCalendar()
-            val month = calendar[Calendar.MONTH] + 1
-            val year = calendar[Calendar.YEAR]
-            val formattedDate = "$month / $year"
-            setDateFieldText(formattedDate)
+            setDateFieldText(it.formatToDayMonthYear())
         }
 
         viewModel.canSave.observe(this) {
             binding.bSave.isEnabled = it
+        }
+
+        viewModel.paymentMethod.observe(this) { paymentMethod ->
+            paymentMethod?.let {
+                setViewFlipperToColorCard(it)
+            } ?: run {
+                binding.viewFlipperSelectPaymentMethod.displayedChild = 0
+            }
+        }
+    }
+
+    private fun setViewFlipperToColorCard(paymentMethod: PaymentMethod) {
+        binding.viewFlipperSelectPaymentMethod.displayedChild = 1
+        binding.colorCard.tvColor.text = paymentMethod.name
+        binding.colorCard.ivColor.setColorFilter(Color.parseColor(paymentMethod.color))
+        binding.colorCard.ivClose.setOnClickListener {
+            viewModel.clearPaymentMethod()
         }
     }
 
@@ -90,7 +112,7 @@ class PaymentEditorActivity : AppCompatActivity() {
 
         initSaveButton()
 
-        binding.tvSelectPaymentMethod.setOnClickListener {
+        binding.viewFlipperSelectPaymentMethod.setOnClickListener {
             paymentSelectorResult.launch(Unit)
         }
     }
@@ -130,8 +152,9 @@ class PaymentEditorActivity : AppCompatActivity() {
         val value = viewModel.selectedValue.value
         val name = binding.tiName.editText?.editableText?.toString()
         val paidDate = viewModel.selectedDate.value
+        val paymentMethod = viewModel.paymentMethod.value
 
-        viewModel.updatePayment(name = name, paidDate = paidDate, paymentValue = value)
+        viewModel.updatePayment(name = name, paidDate = paidDate, paymentValue = value, paymentMethod = paymentMethod)
         finish()
     }
 
@@ -139,13 +162,14 @@ class PaymentEditorActivity : AppCompatActivity() {
         val value = viewModel.selectedValue.value
         val name = binding.tiName.editText?.editableText?.toString()
         val paidDate = viewModel.selectedDate.value
+        val paymentMethod = viewModel.paymentMethod.value
 
         if (value == null || name == null || paidDate == null) {
             return
         }
 
         viewModel.canSave(false)
-        viewModel.createPayment(name, null, value, null, null, paidDate)
+        viewModel.createPayment(name, null, value, paymentMethod, null, paidDate)
         finish()
     }
 

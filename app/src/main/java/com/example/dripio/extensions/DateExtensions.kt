@@ -20,3 +20,11 @@ fun Date.formatToMonthYear(): String {
     val year = calendar[Calendar.YEAR]
     return "$month / $year"
 }
+
+fun Date.formatToDayMonthYear(): String {
+    val calendar = this.toCalendar()
+    val day = calendar[Calendar.DAY_OF_MONTH] + 1
+    val month = calendar[Calendar.MONTH] + 1
+    val year = calendar[Calendar.YEAR]
+    return "$day / $month / $year"
+}

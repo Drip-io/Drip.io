@@ -7,6 +7,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentMethodsBinding
+import com.example.dripio.domain.entity.PaymentMethod
+import com.example.dripio.presentation.base.PAYMENT_METHOD_ID
+
 
 class PaymentMethodsHostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentMethodsBinding
@@ -24,6 +27,12 @@ class PaymentMethodsHostActivity : AppCompatActivity() {
         } ?: run {
             finish()
         }
+    }
+
+    fun finishWithResult(paymentMethodId: Long) {
+        intent.putExtra(PAYMENT_METHOD_ID, paymentMethodId)
+        setResult(RESULT_OK, intent)
+        finish()
     }
 
     private fun initViews() {

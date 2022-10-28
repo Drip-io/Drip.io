@@ -4,9 +4,10 @@ import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.dripio.domain.entity.PaymentMethod
+import com.example.dripio.domain.repository.api.PaymentMethodsRepository
 import com.example.dripio.presentation.base.vm.BaseViewModel
 
-class PaymentMethodsViewModel : BaseViewModel() {
+class PaymentMethodsViewModel(private val paymentMethodsRepository: PaymentMethodsRepository) : BaseViewModel() {
     private val _paymentMethods = MutableLiveData(listOf<PaymentMethod>())
     val paymentMethods: LiveData<List<PaymentMethod>> = _paymentMethods
 
@@ -15,5 +16,17 @@ class PaymentMethodsViewModel : BaseViewModel() {
 
     fun setSelectedColor(color: String) {
         _selectedColor.value = color
+    }
+
+    fun addPaymentMethod(name: String, color: String) {
+        launch {
+            paymentMethodsRepository.add(name = name, color = color)
+        }
+    }
+
+    fun fetchPaymentMethods() {
+        launch {
+            _paymentMethods.postValue(paymentMethodsRepository.findAll())
+        }
     }
 }

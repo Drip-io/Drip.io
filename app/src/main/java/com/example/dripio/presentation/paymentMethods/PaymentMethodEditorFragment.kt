@@ -33,12 +33,33 @@ class PaymentMethodEditorFragment : Fragment() {
     }
 
     private fun initViews() {
-        binding.boxColor.setOnClickListener {
-            val initialColor = Color.parseColor(viewModel.selectedColor.value) ?: 0
-            context?.let { context -> ColorPickerDialog.show(context, initialColor) { r, g, b ->
-                val hexColor = String.format("#%02x%02x%02x", r, g, b)
-                viewModel.setSelectedColor(hexColor)
-            } }
+        binding.colorCard.root.setOnClickListener {
+            val initialColor = try {
+                Color.parseColor(viewModel.selectedColor.value)
+            } catch (ex: Exception) {
+                0
+            }
+            context?.let { context ->
+                ColorPickerDialog.show(context, initialColor) { r, g, b ->
+                    val hexColor = String.format("#%02x%02x%02x", r, g, b)
+                    viewModel.setSelectedColor(hexColor)
+                }
+            }
+        }
+
+        binding.bSave.setOnClickListener {
+            val name = binding.tiName.editText?.editableText?.toString()
+            val color = viewModel.selectedColor.value
+
+            if (name == null) {
+                return@setOnClickListener
+            }
+
+            if (color == null) {
+                return@setOnClickListener
+            }
+
+            viewModel.addPaymentMethod(name, color)
         }
     }
 
@@ -49,7 +70,7 @@ class PaymentMethodEditorFragment : Fragment() {
     }
 
     private fun setColor(color: String) {
-        binding.tvColor.text = color
-        binding.ivColor.setColorFilter(Color.parseColor(color))
+        binding.colorCard.tvColor.text = color
+        binding.colorCard.ivColor.setColorFilter(Color.parseColor(color))
     }
 }

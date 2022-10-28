@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.dripio.data.dao.PaymentDataAccessObject
+import com.example.dripio.data.dao.PaymentMethodsDataAccessObject
 import com.example.dripio.data.entity.EntityCategory
 import com.example.dripio.data.entity.EntityExpense
 import com.example.dripio.data.entity.EntityPayment
@@ -14,6 +15,7 @@ import com.example.dripio.data.entity.EntityPaymentMethod
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun paymentsDataAccessObject(): PaymentDataAccessObject
+    abstract fun paymentMethodsDataAccessObject(): PaymentMethodsDataAccessObject
 
     companion object {
         fun create(context: Context): AppDatabase = Room.databaseBuilder(

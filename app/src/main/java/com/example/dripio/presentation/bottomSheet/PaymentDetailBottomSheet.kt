@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.example.dripio.databinding.BottomSheetPaymentDetailBinding
 import com.example.dripio.domain.entity.Payment
-import com.example.dripio.extensions.formatToMonthYear
+import com.example.dripio.extensions.formatToDayMonthYear
 import com.example.dripio.extensions.toMoneyStringWithComma
 import com.example.dripio.presentation.payments.PaymentsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -27,7 +27,7 @@ class PaymentDetailBottomSheet(private val payment: Payment) : BottomSheetDialog
         val view = BottomSheetPaymentDetailBinding.inflate(inflater)
         view.tvPaymentName.text = payment.name
         view.tvPaymentValue.text = payment.paymentValue.toMoneyStringWithComma()
-        view.tvPaidAt.text = payment.paidAt.formatToMonthYear()
+        view.tvPaidAt.text = payment.paidAt.formatToDayMonthYear()
         view.bDelete.setOnClickListener {
             deletePayment()
             onDelete?.invoke()
