@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/paymentMethodListFragment"
-        android:name="com.example.dripio.presentation.paymentMethods.PaymentMethodListFragment"
+        android:name="com.dripio.presentation.paymentMethods.PaymentMethodListFragment"
         android:label="fragment_payment_method_list"
         tools:layout="@layout/fragment_payment_method_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentMethodEditorFragment"
-        android:name="com.example.dripio.presentation.paymentMethods.PaymentMethodEditorFragment"
+        android:name="com.dripio.presentation.paymentMethods.PaymentMethodEditorFragment"
         android:label="fragment_payment_method_editor"
         tools:layout="@layout/fragment_payment_method_editor" />
 </navigation>
