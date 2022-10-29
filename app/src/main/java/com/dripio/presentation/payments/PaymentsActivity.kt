@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dripio.domain.entity.Payment
 import com.dripio.extensions.formatToMonthYear
 import com.dripio.extensions.toMoneyStringWithComma
+import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.base.startPaymentEditor
 import com.dripio.presentation.bottomSheet.PaymentDetailBottomSheet
 import com.example.dripio.databinding.ActivityPaymentsBinding
@@ -45,7 +46,7 @@ class PaymentsActivity : AppCompatActivity(), PaymentListAdapter.Callback {
         }
 
         viewModel.loading.observe(this) {
-            // binding.viewLoading.root.visibleOrGone(it)
+            binding.viewLoading.root.visibleOrGone(it)
         }
     }
 
