@@ -9,7 +9,6 @@ import com.example.dripio.domain.entity.PaymentMethod
 import com.example.dripio.extensions.closeKeyboard
 import com.example.dripio.extensions.formatToDayMonthYear
 import com.example.dripio.extensions.setText
-import com.example.dripio.extensions.toCalendar
 import com.example.dripio.extensions.toMoneyStringWithPeriod
 import com.example.dripio.presentation.base.PAYMENT_ID
 import com.example.dripio.presentation.paymentMethods.PaymentSelectorActivityContract

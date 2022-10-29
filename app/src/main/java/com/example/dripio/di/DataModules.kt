@@ -1,7 +1,6 @@
 package com.example.dripio.di
 
 import com.example.dripio.data.AppDatabase
-import com.example.dripio.domain.entity.PaymentMethod
 import com.example.dripio.domain.repository.api.PaymentMethodsRepository
 import com.example.dripio.domain.repository.api.PaymentRepository
 import com.example.dripio.domain.repository.impl.PaymentMethodsRepositoryImpl

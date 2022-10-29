@@ -1,6 +1,5 @@
 package com.example.dripio.presentation.paymentMethods
 
-import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.dripio.domain.entity.PaymentMethod

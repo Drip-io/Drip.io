@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dripio.databinding.ActivityPaymentsBinding
 import com.example.dripio.domain.entity.Payment
-import com.example.dripio.extensions.formatToDayMonthYear
 import com.example.dripio.extensions.formatToMonthYear
 import com.example.dripio.extensions.toMoneyStringWithComma
 import com.example.dripio.presentation.base.startPaymentEditor
