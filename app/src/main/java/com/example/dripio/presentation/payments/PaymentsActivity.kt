@@ -8,6 +8,7 @@ import com.example.dripio.domain.entity.Payment
 import com.example.dripio.extensions.formatToDayMonthYear
 import com.example.dripio.extensions.formatToMonthYear
 import com.example.dripio.extensions.toMoneyStringWithComma
+import com.example.dripio.extensions.visibleOrGone
 import com.example.dripio.presentation.base.startPaymentEditor
 import com.example.dripio.presentation.bottomSheet.PaymentDetailBottomSheet
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -46,7 +47,7 @@ class PaymentsActivity : AppCompatActivity(), PaymentListAdapter.Callback {
         }
 
         viewModel.loading.observe(this) {
-            // binding.viewLoading.root.visibleOrGone(it)
+            binding.viewLoading.root.visibleOrGone(it)
         }
     }
 
