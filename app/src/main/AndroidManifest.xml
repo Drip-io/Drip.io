@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".ApplicationInitialization"
+        android:name="com.dripio.ApplicationInitialization"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,13 +14,13 @@
         android:theme="@style/Theme.Dripio.NoActionBarAndStatusBar"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.paymentMethods.PaymentMethodsHostActivity"
+            android:name="com.dripio.presentation.paymentMethods.PaymentMethodsHostActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.paymentEditor.PaymentEditorActivity"
+            android:name="com.dripio.presentation.paymentEditor.PaymentEditorActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.payments.PaymentsActivity"
+            android:name="com.dripio.presentation.payments.PaymentsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
