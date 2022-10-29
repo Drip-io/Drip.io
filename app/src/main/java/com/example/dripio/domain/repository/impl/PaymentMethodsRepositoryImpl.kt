@@ -16,10 +16,10 @@ class PaymentMethodsRepositoryImpl(private val appDatabase: AppDatabase) : Payme
     override suspend fun add(name: String, color: String) {
         appDatabase.paymentMethodsDataAccessObject().add(
             EntityPaymentMethod(
-            id = null,
-            name = name,
-            color = color
-        )
+                id = null,
+                name = name,
+                color = color
+            )
         )
     }
 

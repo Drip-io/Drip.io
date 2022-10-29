@@ -93,8 +93,10 @@ class PaymentEditorViewModel(
 
                 if (name != null) lastPayment = lastPayment.copy(name = name)
                 if (expense != null) lastPayment = lastPayment.copy(expense = expense)
-                if (paymentValue != null) lastPayment =
-                    lastPayment.copy(paymentValue = paymentValue)
+                if (paymentValue != null) {
+                    lastPayment =
+                        lastPayment.copy(paymentValue = paymentValue)
+                }
 
                 lastPayment = if (paymentMethod != null) lastPayment.copy(paymentMethod = paymentMethod) else lastPayment.copy(paymentMethod = null)
                 if (category != null) lastPayment = lastPayment.copy(category = category)

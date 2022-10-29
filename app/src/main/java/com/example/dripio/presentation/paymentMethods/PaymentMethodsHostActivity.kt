@@ -7,9 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentMethodsBinding
-import com.example.dripio.domain.entity.PaymentMethod
 import com.example.dripio.presentation.base.PAYMENT_METHOD_ID
-
 
 class PaymentMethodsHostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentMethodsBinding

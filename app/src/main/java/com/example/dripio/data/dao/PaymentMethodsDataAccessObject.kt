@@ -4,9 +4,6 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Transaction
-import com.example.dripio.data.entity.EntityComplexPayment
-import com.example.dripio.data.entity.EntityPayment
 import com.example.dripio.data.entity.EntityPaymentMethod
 
 @Dao
