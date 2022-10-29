@@ -2,8 +2,6 @@ package com.example.dripio.presentation.base
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
-import android.content.DialogInterface.OnClickListener
 import android.graphics.Color
 import android.view.LayoutInflater
 import com.example.dripio.databinding.ViewColorPickerBinding

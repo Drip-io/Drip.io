@@ -1,13 +1,11 @@
 package com.example.dripio.presentation.paymentMethods
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.dripio.R.layout.fragment_payment_method_editor
 import com.example.dripio.databinding.FragmentPaymentMethodEditorBinding
 import com.example.dripio.presentation.base.ColorPickerDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
