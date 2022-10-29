@@ -46,7 +46,7 @@ class PaymentsActivity : AppCompatActivity(), PaymentListAdapter.Callback {
         }
 
         viewModel.loading.observe(this) {
-            // TODO
+            // binding.viewLoading.root.visibleOrGone(it)
         }
     }
 
