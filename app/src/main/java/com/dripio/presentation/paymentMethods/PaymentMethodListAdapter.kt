@@ -5,9 +5,9 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.dripio.databinding.ViewPaymentMethodItemBinding
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.presentation.base.BaseAdapter
+import com.example.dripio.databinding.ViewPaymentMethodItemBinding
 
 class PaymentMethodListAdapter(private val context: Context, val callback: Callback? = null) : BaseAdapter<PaymentMethod, PaymentMethodListAdapter.AdapterViewHolder>() {
 

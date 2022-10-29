@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import com.example.dripio.databinding.BottomSheetPaymentDetailBinding
 import com.dripio.domain.entity.Payment
 import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.toMoneyStringWithComma
 import com.dripio.presentation.payments.PaymentsViewModel
+import com.example.dripio.databinding.BottomSheetPaymentDetailBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dripio.databinding.FragmentPaymentMethodListBinding
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.visibleOrGone
+import com.example.dripio.databinding.FragmentPaymentMethodListBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PaymentMethodListFragment : Fragment(), PaymentMethodListAdapter.Callback {

@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dripio.databinding.ViewPaymentItemBinding
 import com.dripio.domain.entity.Payment
 import com.dripio.extensions.toMoneyStringWithComma
+import com.example.dripio.databinding.ViewPaymentItemBinding
 
 class PaymentListAdapter(private val context: Context, val callback: Callback) :
     RecyclerView.Adapter<PaymentListAdapter.PaymentViewHolder>() {

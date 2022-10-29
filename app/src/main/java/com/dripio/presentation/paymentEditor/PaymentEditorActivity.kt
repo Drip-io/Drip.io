@@ -3,8 +3,6 @@ package com.dripio.presentation.paymentEditor
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.dripio.R
-import com.example.dripio.databinding.ActivityPaymentEditorBinding
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.closeKeyboard
 import com.dripio.extensions.formatToDayMonthYear
@@ -12,6 +10,8 @@ import com.dripio.extensions.setText
 import com.dripio.extensions.toMoneyStringWithPeriod
 import com.dripio.presentation.base.PAYMENT_ID
 import com.dripio.presentation.paymentMethods.PaymentSelectorActivityContract
+import com.example.dripio.R
+import com.example.dripio.databinding.ActivityPaymentEditorBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*

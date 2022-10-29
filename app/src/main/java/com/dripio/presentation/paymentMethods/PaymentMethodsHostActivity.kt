@@ -5,9 +5,9 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.dripio.presentation.base.PAYMENT_METHOD_ID
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentMethodsBinding
-import com.dripio.presentation.base.PAYMENT_METHOD_ID
 
 class PaymentMethodsHostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentMethodsBinding

@@ -3,12 +3,12 @@ package com.dripio.presentation.payments
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dripio.databinding.ActivityPaymentsBinding
 import com.dripio.domain.entity.Payment
 import com.dripio.extensions.formatToMonthYear
 import com.dripio.extensions.toMoneyStringWithComma
 import com.dripio.presentation.base.startPaymentEditor
 import com.dripio.presentation.bottomSheet.PaymentDetailBottomSheet
+import com.example.dripio.databinding.ActivityPaymentsBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*

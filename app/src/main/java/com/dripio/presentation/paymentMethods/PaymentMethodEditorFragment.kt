@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.dripio.databinding.FragmentPaymentMethodEditorBinding
 import com.dripio.presentation.base.ColorPickerDialog
+import com.example.dripio.databinding.FragmentPaymentMethodEditorBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PaymentMethodEditorFragment : Fragment() {
