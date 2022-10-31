@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dripio.presentation.paymentMethods.list.PaymentMethodListActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Método de pagamento"
+        app:titleTextColor="?attr/colorPrimary"
+        app:menu="@menu/menu_payment_list_options"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_payment_methods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:listitem="@layout/view_payment_method_item" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/box_no_payment_methods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginVertical="@dimen/medium"
+            app:tint="@color/red"
+            android:src="@drawable/ic_round_credit_card_off_24"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Text.18.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Não há métodos de pagamento registrados!"
+            android:maxWidth="300dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

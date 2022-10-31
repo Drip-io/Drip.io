@@ -1,4 +1,4 @@
-package com.dripio.presentation.paymentMethods
+package com.dripio.presentation.paymentMethods.list
 
 import android.content.Context
 import android.graphics.Color
@@ -9,9 +9,13 @@ import com.dripio.domain.entity.PaymentMethod
 import com.dripio.presentation.base.BaseAdapter
 import com.example.dripio.databinding.ViewPaymentMethodItemBinding
 
-class PaymentMethodListAdapter(private val context: Context, val callback: Callback? = null) : BaseAdapter<PaymentMethod, PaymentMethodListAdapter.AdapterViewHolder>() {
+class PaymentMethodListAdapter(
+    private val context: Context,
+    private val callback: Callback? = null
+) : BaseAdapter<PaymentMethod, PaymentMethodListAdapter.AdapterViewHolder>() {
 
-    class AdapterViewHolder(private val view: View, val onClick: (PaymentMethod) -> Unit) : BaseViewHolder<PaymentMethod>(view) {
+    class AdapterViewHolder(private val view: View, private val onClick: (PaymentMethod) -> Unit) :
+        BaseViewHolder<PaymentMethod>(view) {
         override fun bind(item: PaymentMethod) {
             val itemView = ViewPaymentMethodItemBinding.bind(view)
             itemView.tvName.text = item.name

@@ -9,7 +9,8 @@ import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.setText
 import com.dripio.extensions.toMoneyStringWithPeriod
 import com.dripio.presentation.base.PAYMENT_ID
-import com.dripio.presentation.paymentMethods.PaymentSelectorActivityContract
+import com.dripio.presentation.base.openPaymentEditor
+import com.dripio.presentation.paymentMethods.list.PaymentMethodListActivity
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentEditorBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -32,7 +33,7 @@ class PaymentEditorActivity : AppCompatActivity() {
         }
     }
 
-    private val paymentSelectorResult = registerForActivityResult(PaymentSelectorActivityContract()) { paymentMethodId ->
+    private val paymentSelectorResult = openPaymentEditor { paymentMethodId ->
         paymentMethodId?.let {
             viewModel.fetchPaymentMethod(it)
         }
