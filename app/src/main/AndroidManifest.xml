@@ -14,10 +14,15 @@
         android:theme="@style/Theme.Dripio.NoActionBarAndStatusBar"
         tools:targetApi="31">
         <activity
-            android:name="com.dripio.presentation.paymentMethods.PaymentMethodsHostActivity"
-            android:exported="false" />
-        <activity
             android:name="com.dripio.presentation.paymentEditor.PaymentEditorActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.dripio.presentation.paymentMethods.editor.PaymentMethodEditorActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.dripio.presentation.paymentMethods.list.PaymentMethodListActivity"
             android:exported="false" />
         <activity
             android:name="com.dripio.presentation.payments.PaymentsActivity"
