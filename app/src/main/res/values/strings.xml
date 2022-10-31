@@ -7,10 +7,13 @@
     <string name="register">Registrar</string>
     <string name="name">Nome</string>
     <string name="value">Valor</string>
+    <string name="delete">Excluir</string>
+    <string name="cancel">Cancelar</string>
     <string name="payment_date">Data de Pagamento</string>
     <string name="select_expense">Selecionar despesa…</string>
     <string name="select_payment_method">Selecionar método de pagamento…</string>
     <string name="select_category">Selecionar categoria…</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="confirm_delete_payment_method_title">Confirmação de exclusão de método de pagamento</string>
+    <string name="confirm_delete_payment_method_message">Você deseja excluir %s?</string>
 </resources>

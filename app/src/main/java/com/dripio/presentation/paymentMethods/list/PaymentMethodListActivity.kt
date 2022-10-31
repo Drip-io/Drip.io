@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.base.PAYMENT_METHOD_ID
+import com.dripio.presentation.base.showConfirmDeletePaymentMethod
 import com.dripio.presentation.base.startPaymentMethodEditor
 import com.dripio.presentation.paymentMethods.list.vm.PaymentMethodListViewModel
 import com.example.dripio.R
@@ -94,21 +94,11 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
     }
 
     private fun showConfirmDelete(paymentMethod: PaymentMethod) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Confirmação de exclusão")
-        builder.setMessage("Você deseja excluir ${paymentMethod.name}?")
-        builder.setPositiveButton(
-            "Excluir"
-        ) { _, _ ->
+        showConfirmDeletePaymentMethod(paymentMethod) {
             viewModel.deletePaymentMethod(paymentMethod.id) {
                 viewModel.fetchPaymentMethods()
             }
         }
-        builder.setNegativeButton("Cancelar") { dialog, _ ->
-            dialog.dismiss()
-        }
-        val alertDialog = builder.create()
-        alertDialog.show()
     }
 
     class PaymentSelectorActivityContract : ActivityResultContract<Unit, Long?>() {
