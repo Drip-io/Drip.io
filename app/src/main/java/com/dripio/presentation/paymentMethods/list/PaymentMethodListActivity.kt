@@ -12,6 +12,7 @@ import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.base.PAYMENT_METHOD_ID
 import com.dripio.presentation.base.showConfirmDeletePaymentMethod
 import com.dripio.presentation.base.startPaymentMethodEditor
+import com.dripio.presentation.paymentMethods.list.adapter.PaymentMethodListAdapter
 import com.dripio.presentation.paymentMethods.list.vm.PaymentMethodListViewModel
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentMethodListBinding

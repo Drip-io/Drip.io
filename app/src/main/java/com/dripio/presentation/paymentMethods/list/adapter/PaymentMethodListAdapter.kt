@@ -1,4 +1,4 @@
-package com.dripio.presentation.paymentMethods.list
+package com.dripio.presentation.paymentMethods.list.adapter
 
 import android.content.Context
 import android.graphics.Color
