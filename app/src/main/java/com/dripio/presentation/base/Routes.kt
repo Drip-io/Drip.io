@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import com.dripio.presentation.paymentEditor.PaymentEditorActivity
 import com.dripio.presentation.paymentMethods.editor.PaymentMethodEditorActivity
-import com.dripio.presentation.paymentMethods.list.PaymentMethodListActivity
 
 fun Context.startPaymentEditor(paymentId: Long? = null) {
     val intent = Intent(this, PaymentEditorActivity::class.java)

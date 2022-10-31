@@ -2,10 +2,10 @@ package com.dripio.presentation.paymentMethods.list
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.visibleOrGone

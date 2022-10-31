@@ -10,7 +10,6 @@ import com.dripio.extensions.setText
 import com.dripio.extensions.toMoneyStringWithPeriod
 import com.dripio.presentation.base.PAYMENT_ID
 import com.dripio.presentation.base.openPaymentEditor
-import com.dripio.presentation.paymentMethods.list.PaymentMethodListActivity
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentEditorBinding
 import com.google.android.material.datepicker.MaterialDatePicker
