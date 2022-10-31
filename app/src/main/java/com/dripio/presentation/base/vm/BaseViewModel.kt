@@ -16,7 +16,7 @@ open class BaseViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 block.invoke()
-                _loading.postValue(true)
+                _loading.postValue(false)
             } catch (ex: Throwable) {
                 Log.e("BASE_VIEW_MODEL_ERROR", ex.toString())
                 errorBlock?.invoke(ex)
