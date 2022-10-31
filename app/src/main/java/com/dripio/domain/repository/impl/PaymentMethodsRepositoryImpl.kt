@@ -29,7 +29,9 @@ class PaymentMethodsRepositoryImpl(private val appDatabase: AppDatabase) :
     }
 
     override suspend fun deleteById(id: Long) {
-        TODO("Not yet implemented")
+        appDatabase.paymentMethodsDataAccessObject().findById(id)?.let {
+            appDatabase.paymentMethodsDataAccessObject().delete(it)
+        }
     }
 
     override suspend fun update(domain: PaymentMethod) {

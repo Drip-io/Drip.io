@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dripio.domain.entity.PaymentMethod
@@ -48,7 +49,8 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
         setupActionBar()
         initAdapter()
         binding.rvPaymentMethods.adapter = adapter
-        binding.rvPaymentMethods.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvPaymentMethods.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,10 +80,35 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
         finishWithResult(paymentMethod.id)
     }
 
+    override fun clickEditItem(paymentMethod: PaymentMethod) {
+    }
+
+    override fun clickDeleteItem(paymentMethod: PaymentMethod) {
+        showConfirmDelete(paymentMethod)
+    }
+
     private fun finishWithResult(paymentMethodId: Long) {
         intent.putExtra(PAYMENT_METHOD_ID, paymentMethodId)
         setResult(RESULT_OK, intent)
         finish()
+    }
+
+    private fun showConfirmDelete(paymentMethod: PaymentMethod) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmação de exclusão")
+        builder.setMessage("Você deseja excluir ${paymentMethod.name}?")
+        builder.setPositiveButton(
+            "Excluir"
+        ) { _, _ ->
+            viewModel.deletePaymentMethod(paymentMethod.id) {
+                viewModel.fetchPaymentMethods()
+            }
+        }
+        builder.setNegativeButton("Cancelar") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 
     class PaymentSelectorActivityContract : ActivityResultContract<Unit, Long?>() {
