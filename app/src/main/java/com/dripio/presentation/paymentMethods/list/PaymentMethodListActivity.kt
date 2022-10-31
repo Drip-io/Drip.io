@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.base.PAYMENT_METHOD_ID
+import com.dripio.presentation.base.showConfirmDeletePaymentMethod
 import com.dripio.presentation.base.startPaymentMethodEditor
 import com.dripio.presentation.paymentMethods.list.vm.PaymentMethodListViewModel
 import com.example.dripio.R
@@ -48,7 +49,8 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
         setupActionBar()
         initAdapter()
         binding.rvPaymentMethods.adapter = adapter
-        binding.rvPaymentMethods.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvPaymentMethods.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,10 +80,25 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
         finishWithResult(paymentMethod.id)
     }
 
+    override fun clickEditItem(paymentMethod: PaymentMethod) {
+    }
+
+    override fun clickDeleteItem(paymentMethod: PaymentMethod) {
+        showConfirmDelete(paymentMethod)
+    }
+
     private fun finishWithResult(paymentMethodId: Long) {
         intent.putExtra(PAYMENT_METHOD_ID, paymentMethodId)
         setResult(RESULT_OK, intent)
         finish()
+    }
+
+    private fun showConfirmDelete(paymentMethod: PaymentMethod) {
+        showConfirmDeletePaymentMethod(paymentMethod) {
+            viewModel.deletePaymentMethod(paymentMethod.id) {
+                viewModel.fetchPaymentMethods()
+            }
+        }
     }
 
     class PaymentSelectorActivityContract : ActivityResultContract<Unit, Long?>() {

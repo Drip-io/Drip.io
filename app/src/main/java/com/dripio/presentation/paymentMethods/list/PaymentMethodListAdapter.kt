@@ -14,7 +14,7 @@ class PaymentMethodListAdapter(
     private val callback: Callback? = null
 ) : BaseAdapter<PaymentMethod, PaymentMethodListAdapter.AdapterViewHolder>() {
 
-    class AdapterViewHolder(private val view: View, private val onClick: (PaymentMethod) -> Unit) :
+    class AdapterViewHolder(private val view: View, private val onClick: (PaymentMethod) -> Unit, private val onClickDelete: (PaymentMethod) -> Unit) :
         BaseViewHolder<PaymentMethod>(view) {
         override fun bind(item: PaymentMethod) {
             val itemView = ViewPaymentMethodItemBinding.bind(view)
@@ -23,12 +23,17 @@ class PaymentMethodListAdapter(
                 onClick.invoke(item)
             }
             itemView.ivColor.setColorFilter(Color.parseColor(item.color))
+            itemView.ibDelete.setOnClickListener { onClickDelete.invoke(item) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterViewHolder {
         val view = ViewPaymentMethodItemBinding.inflate(LayoutInflater.from(context), parent, false)
-        return AdapterViewHolder(view.root) { callback?.clickItem(it) }
+        return AdapterViewHolder(view.root, onClick = {
+            callback?.clickItem(it)
+        }, onClickDelete = {
+                callback?.clickDeleteItem(it)
+            })
     }
 
     override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
@@ -39,5 +44,7 @@ class PaymentMethodListAdapter(
 
     interface Callback {
         fun clickItem(paymentMethod: PaymentMethod)
+        fun clickEditItem(paymentMethod: PaymentMethod)
+        fun clickDeleteItem(paymentMethod: PaymentMethod)
     }
 }

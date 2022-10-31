@@ -16,4 +16,11 @@ class PaymentMethodListViewModel(private val paymentMethodsRepository: PaymentMe
             _paymentMethods.postValue(paymentMethodsRepository.findAll())
         }
     }
+
+    fun deletePaymentMethod(paymentMethodId: Long, callback: (() -> Unit)? = null) {
+        launch {
+            paymentMethodsRepository.deleteById(paymentMethodId)
+            callback?.invoke()
+        }
+    }
 }
