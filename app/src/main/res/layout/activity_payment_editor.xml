@@ -40,22 +40,11 @@
         android:layout_marginTop="@dimen/regular"
         app:layout_constraintTop_toBottomOf="@+id/ti_name">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_value"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/small"
+        <com.dripio.presentation.base.components.TextInputCurrency
+            android:id="@+id/text_input_currency"
             android:layout_weight="1"
-            android:hint="@string/value"
-            app:startIconDrawable="@drawable/ic_outline_attach_money_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_date"
