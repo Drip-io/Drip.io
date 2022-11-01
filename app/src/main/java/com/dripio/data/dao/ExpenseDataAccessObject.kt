@@ -5,7 +5,6 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.dripio.data.entity.EntityExpense
-import com.dripio.data.entity.EntityPayment
 
 @Dao
 interface ExpenseDataAccessObject {

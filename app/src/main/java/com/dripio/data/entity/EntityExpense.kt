@@ -12,7 +12,7 @@ data class EntityExpense(
     var id: Long? = null,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "installments") val installments: Int? = null,
-    @ColumnInfo(name = "total_value") val totalValue: Float,
+    @ColumnInfo(name = "total_value") val totalValue: Float
 )
 
 fun EntityExpense.toDomain() = Expense(
