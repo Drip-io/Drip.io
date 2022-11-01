@@ -10,9 +10,14 @@ data class EntityExpense(
     @PrimaryKey
     @ColumnInfo(name = "expense_id")
     var id: Long? = null,
-    @ColumnInfo(name = "name") var name: String
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "installments") val installments: Int? = null,
+    @ColumnInfo(name = "total_value") val totalValue: Float,
 )
 
 fun EntityExpense.toDomain() = Expense(
-    id = this.id ?: 0
+    id = this.id ?: 0,
+    name = this.name,
+    installments = this.installments,
+    totalValue = this.totalValue
 )

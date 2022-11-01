@@ -38,7 +38,8 @@ class PaymentsActivity : AppCompatActivity(), PaymentListAdapter.Callback {
 
         viewModel.payments.observe(this) { payments ->
             paymentListAdapter.payments = payments
-            binding.tvTotalValue.text = payments.sumOf { it.paymentValue.toDouble() }.toFloat().toMoneyStringWithComma()
+            binding.tvTotalValue.text =
+                payments.sumOf { it.paymentValue.toDouble() }.toFloat().toMoneyStringWithComma()
         }
 
         viewModel.selectedDate.observe(this) {
@@ -68,7 +69,8 @@ class PaymentsActivity : AppCompatActivity(), PaymentListAdapter.Callback {
     private fun setupPaymentList() {
         paymentListAdapter = PaymentListAdapter(this, this)
         binding.rvPayments.adapter = paymentListAdapter
-        binding.rvPayments.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvPayments.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
     override fun onClickListener(payment: Payment) {
