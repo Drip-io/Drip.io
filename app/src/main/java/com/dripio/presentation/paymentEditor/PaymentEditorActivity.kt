@@ -4,10 +4,8 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dripio.domain.entity.PaymentMethod
-import com.dripio.extensions.closeKeyboard
 import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.setText
-import com.dripio.extensions.toMoneyStringWithPeriod
 import com.dripio.presentation.base.PAYMENT_ID
 import com.dripio.presentation.base.openPaymentEditor
 import com.example.dripio.R

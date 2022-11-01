@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputLayout
 class TextInputCurrency @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
-    defStyle: Int = 0,
+    defStyle: Int = 0
 ) : TextInputLayout(context, attributeSet, defStyle) {
     private var binding: ComponentCurrentTextInputBinding
 
