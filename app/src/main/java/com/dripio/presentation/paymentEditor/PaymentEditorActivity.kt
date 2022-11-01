@@ -4,10 +4,8 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dripio.domain.entity.PaymentMethod
-import com.dripio.extensions.closeKeyboard
 import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.setText
-import com.dripio.extensions.toMoneyStringWithPeriod
 import com.dripio.presentation.base.PAYMENT_ID
 import com.dripio.presentation.base.openPaymentEditor
 import com.example.dripio.R
@@ -50,12 +48,8 @@ class PaymentEditorActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.selectedValue.observe(this) { selectedValue ->
-            selectedValue.toString().toFloatOrNull()?.let {
-                setValueFieldText(it.toMoneyStringWithPeriod())
-            } ?: run {
-                setValueFieldText("0.00")
-            }
+        binding.textInputCurrency.onUpdateValue = {
+            viewModel.selectValue(it)
         }
 
         viewModel.selectedDate.observe(this) {
@@ -90,22 +84,6 @@ class PaymentEditorActivity : AppCompatActivity() {
         binding.tiDate.editText?.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 showDatePicker()
-            }
-        }
-
-        binding.tiValue.editText?.setOnFocusChangeListener { _, _ ->
-            binding.tiValue.editText?.text?.toString()?.toFloatOrNull()?.let {
-                viewModel.selectValue(it)
-            } ?: run {
-                viewModel.selectValue(0F)
-            }
-        }
-
-        binding.tiValue.editText?.let {
-            it.setOnEditorActionListener { _, _, _ ->
-                it.clearFocus()
-                it.closeKeyboard()
-                return@setOnEditorActionListener true
             }
         }
 
@@ -175,10 +153,6 @@ class PaymentEditorActivity : AppCompatActivity() {
     private fun setDateFieldText(text: String) {
         binding.tiDate.editText?.editableText?.clear()
         binding.tiDate.editText?.editableText?.insert(0, text)
-    }
-
-    private fun setValueFieldText(text: String) {
-        binding.tiValue.editText?.editableText?.setText(text)
     }
 
     private fun clearDateFieldFocus() {
