@@ -6,3 +6,7 @@ fun Editable.setText(text: String) {
     this.clear()
     this.insert(0, text)
 }
+
+fun Editable.setText(number: Int) {
+    this.setText("$number")
+}

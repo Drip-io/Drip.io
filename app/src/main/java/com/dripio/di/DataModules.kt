@@ -1,8 +1,10 @@
 package com.dripio.di
 
 import com.dripio.data.AppDatabase
+import com.dripio.domain.repository.api.ExpenseRepository
 import com.dripio.domain.repository.api.PaymentMethodsRepository
 import com.dripio.domain.repository.api.PaymentRepository
+import com.dripio.domain.repository.impl.ExpenseRepositoryImpl
 import com.dripio.domain.repository.impl.PaymentMethodsRepositoryImpl
 import com.dripio.domain.repository.impl.PaymentRepositoryImpl
 import org.koin.android.ext.koin.androidContext
@@ -13,4 +15,5 @@ val dataModules = module {
 
     factory<PaymentRepository> { PaymentRepositoryImpl(get()) }
     factory<PaymentMethodsRepository> { PaymentMethodsRepositoryImpl(get()) }
+    factory<ExpenseRepository> { ExpenseRepositoryImpl(get()) }
 }

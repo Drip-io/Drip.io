@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentManager
 import com.dripio.domain.entity.Payment
 import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.toMoneyStringWithComma
+import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.payments.PaymentsViewModel
+import com.example.dripio.R
 import com.example.dripio.databinding.BottomSheetPaymentDetailBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -23,21 +25,27 @@ class PaymentDetailBottomSheet(private val payment: Payment) : BottomSheetDialog
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val view = BottomSheetPaymentDetailBinding.inflate(inflater)
-        view.tvPaymentName.text = payment.name
-        view.tvPaymentValue.text = payment.paymentValue.toMoneyStringWithComma()
-        view.tvPaidAt.text = payment.paidAt.formatToDayMonthYear()
-        view.bDelete.setOnClickListener {
-            deletePayment()
-            onDelete?.invoke()
-            dismiss()
+    ): View? {
+        if(context != null) {
+            val view = BottomSheetPaymentDetailBinding.inflate(inflater)
+            view.tvPaymentName.text = payment.name
+            view.tvPaymentValue.text = payment.paymentValue.toMoneyStringWithComma()
+            view.tvPaidAt.text = payment.paidAt.formatToDayMonthYear()
+            view.bDelete.setOnClickListener {
+                deletePayment()
+                onDelete?.invoke()
+                dismiss()
+            }
+            view.bEdit.setOnClickListener {
+                onEdit?.invoke(payment)
+                dismiss()
+            }
+            view.groupExpense.visibleOrGone(payment.expense != null)
+            view.tvExpense.text = context?.getString(R.string.payment_resume_expense_template, payment.expense?.name)
+            view.tvInstallmentStatus.text = context?.getString(R.string.payment_resume_expense_installment, payment.expense?.relatedPayments?.size ?: 0, payment.expense?.installments ?: 0)
+            return view.root
         }
-        view.bEdit.setOnClickListener {
-            onEdit?.invoke(payment)
-            dismiss()
-        }
-        return view.root
+        return null
     }
 
     private fun deletePayment() {

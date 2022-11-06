@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dripio.presentation.expenses.editor.ExpenseEditorActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Despesa"
+        app:titleTextColor="?attr/colorPrimary" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:hint="@string/name"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:startIconDrawable="@drawable/ic_baseline_label_important_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.dripio.presentation.base.components.TextInputCurrency
+        android:id="@+id/text_input_currency"
+        android:layout_marginVertical="@dimen/regular"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/ti_name" />
+
+    <com.dripio.presentation.base.components.TextInputCurrency
+        android:id="@+id/textInputCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:layout_marginVertical="@dimen/regular"
+        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_currency"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium"
+        android:text="Prestações"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputCurrency" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8"
+        tools:layout_editor_absoluteX="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_decrease"
+            android:tint="?attr/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/regular"
+            android:src="@drawable/ic_round_remove_circle_24" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_installments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regular"
+            android:minWidth="48dp"
+            android:textAlignment="center"
+            tools:text="12"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_increase"
+            android:tint="?attr/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/regular"
+            android:src="@drawable/ic_round_add_circle_24" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:text="Valor Total"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/box_total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView10">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Currency.Prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/small"
+            android:text="@string/currency_prefix" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_total_value"
+            style="@style/Currency.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="99,99" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_installment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="box_installments, tv_installments_label"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_installments_label"
+        android:layout_marginTop="@dimen/medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:text="Valor da prestação"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/box_total_value" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/box_installments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_installments_label">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Currency.Prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/small"
+            android:text="@string/currency_prefix" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_installment_value"
+            style="@style/Currency.Value"
+            android:layout_marginEnd="@dimen/regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="11,99" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_installment_resume"
+            style="@style/Currency.Installments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/installment_resume" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/b_save"
+        android:text="Salvar"
+        android:layout_margin="@dimen/regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

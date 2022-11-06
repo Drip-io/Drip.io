@@ -11,7 +11,6 @@ import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.base.PAYMENT_METHOD_ID
 import com.dripio.presentation.base.showConfirmDeletePaymentMethod
-import com.dripio.presentation.base.startPaymentMethodEditor
 import com.dripio.presentation.paymentMethods.list.adapter.PaymentMethodListAdapter
 import com.dripio.presentation.paymentMethods.list.vm.PaymentMethodListViewModel
 import com.example.dripio.R
@@ -58,7 +57,7 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
         menuInflater.inflate(R.menu.menu_payment_list_options, menu)
         menu.findItem(R.id.menu_payment_method_editor)?.let {
             it.setOnMenuItemClickListener {
-                startPaymentMethodEditor()
+
                 true
             }
         }
@@ -102,7 +101,7 @@ class PaymentMethodListActivity : AppCompatActivity(), PaymentMethodListAdapter.
         }
     }
 
-    class PaymentSelectorActivityContract : ActivityResultContract<Unit, Long?>() {
+    class PaymentMethodSelectorActivityContract : ActivityResultContract<Unit, Long?>() {
         override fun createIntent(context: Context, input: Unit): Intent =
             Intent(context, PaymentMethodListActivity::class.java)
 

@@ -6,7 +6,8 @@ data class Expense(
     val id: Long,
     val name: String,
     val installments: Int?,
-    val totalValue: Float
+    val totalValue: Float,
+    val relatedPayments: List<SimplePayment> = listOf()
 ) {
     fun getInstallmentValue(): Float =
         if (installments == null || installments == 0 || installments == 1) {

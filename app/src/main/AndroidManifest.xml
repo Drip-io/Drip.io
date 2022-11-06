@@ -14,13 +14,25 @@
         android:theme="@style/Theme.Dripio.NoActionBarAndStatusBar"
         tools:targetApi="31">
         <activity
+            android:name="com.dripio.presentation.expenses.editor.ExpenseEditorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.dripio.presentation.expenses.list.ExpenseListActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.dripio.presentation.paymentEditor.PaymentEditorActivity"
             android:exported="false" />
-
         <activity
             android:name="com.dripio.presentation.paymentMethods.editor.PaymentMethodEditorActivity"
             android:exported="false" />
-
         <activity
             android:name="com.dripio.presentation.paymentMethods.list.PaymentMethodListActivity"
             android:exported="false" />

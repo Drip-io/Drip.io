@@ -3,11 +3,14 @@ package com.dripio.presentation.paymentEditor
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dripio.domain.entity.Expense
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.setText
 import com.dripio.presentation.base.PAYMENT_ID
-import com.dripio.presentation.base.openPaymentEditor
+import com.dripio.presentation.base.openExpenseList
+import com.dripio.presentation.base.openPaymentMethodList
+import com.dripio.presentation.base.startExpenseList
 import com.example.dripio.R
 import com.example.dripio.databinding.ActivityPaymentEditorBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -30,9 +33,15 @@ class PaymentEditorActivity : AppCompatActivity() {
         }
     }
 
-    private val paymentSelectorResult = openPaymentEditor { paymentMethodId ->
+    private val paymentSelectorResult = openPaymentMethodList { paymentMethodId ->
         paymentMethodId?.let {
             viewModel.fetchPaymentMethod(it)
+        }
+    }
+
+    private val expenseSelectorResult = openExpenseList { expenseId ->
+        expenseId?.let {
+            viewModel.fetchExpense(expenseId)
         }
     }
 
@@ -67,6 +76,14 @@ class PaymentEditorActivity : AppCompatActivity() {
                 binding.viewFlipperSelectPaymentMethod.displayedChild = 0
             }
         }
+
+        viewModel.expense.observe(this) { expense ->
+            expense?.let {
+                setViewFlipperToExpenseCard(it)
+            } ?: run {
+                binding.viewFlipperSelectExpense.displayedChild = 0
+            }
+        }
     }
 
     private fun setViewFlipperToColorCard(paymentMethod: PaymentMethod) {
@@ -75,6 +92,14 @@ class PaymentEditorActivity : AppCompatActivity() {
         binding.colorCard.ivColor.setColorFilter(Color.parseColor(paymentMethod.color))
         binding.colorCard.ivClose.setOnClickListener {
             viewModel.clearPaymentMethod()
+        }
+    }
+
+    private fun setViewFlipperToExpenseCard(expense: Expense) {
+        binding.viewFlipperSelectExpense.displayedChild = 1
+        binding.expenseCard.tvName.text = expense.name
+        binding.expenseCard.ivClose.setOnClickListener {
+            viewModel.clearExpense()
         }
     }
 
@@ -91,6 +116,10 @@ class PaymentEditorActivity : AppCompatActivity() {
 
         binding.viewFlipperSelectPaymentMethod.setOnClickListener {
             paymentSelectorResult.launch(Unit)
+        }
+
+        binding.viewFlipperSelectExpense.setOnClickListener {
+            expenseSelectorResult.launch(Unit)
         }
     }
 
@@ -140,13 +169,14 @@ class PaymentEditorActivity : AppCompatActivity() {
         val name = binding.tiName.editText?.editableText?.toString()
         val paidDate = viewModel.selectedDate.value
         val paymentMethod = viewModel.paymentMethod.value
+        val expense = viewModel.expense.value
 
-        if (value == null || name == null || paidDate == null) {
+        if (value == null || name == null || paidDate == null || expense == null) {
             return
         }
 
         viewModel.canSave(false)
-        viewModel.createPayment(name, null, value, paymentMethod, null, paidDate)
+        viewModel.createPayment(name, expense, value, paymentMethod, null, paidDate)
         finish()
     }
 

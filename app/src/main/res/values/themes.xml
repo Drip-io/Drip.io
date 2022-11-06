@@ -86,6 +86,18 @@
         <item name="android:textColor">@color/red</item>
     </style>
 
+    <style name="Currency.Prefix" parent="Text.16.Bold">
+        <item name="android:textColor">@color/green_dark</item>
+    </style>
+
+    <style name="Currency.Value" parent="Text.14">
+        <item name="android:textColor">@color/green_dark</item>
+    </style>
+
+    <style name="Currency.Installments" parent="Text.Bold">
+        <item name="android:textColor">@color/green_dark</item>
+    </style>
+
     <style name="ClickableText" parent="Text.Bold">
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>

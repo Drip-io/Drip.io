@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import com.dripio.domain.entity.Payment
+import com.dripio.domain.entity.SimplePayment
 import com.dripio.extensions.toDate
 
 @Entity(
@@ -26,6 +27,15 @@ data class EntityPayment(
     @ColumnInfo(name = "created_at") var createdAt: Long,
     @ColumnInfo(name = "paid_at") var paidAt: Long,
     @ColumnInfo(name = "updated_at") var updatedAt: Long
+)
+
+fun EntityPayment.toSimpleDomain() = SimplePayment(
+    id = this.id ?: 0,
+    name = this.name ?: "",
+    paymentValue = this.paymentValue,
+    paidAt = this.paidAt.toDate(),
+    createdAt = this.createdAt.toDate(),
+    updatedAt = this.updatedAt.toDate()
 )
 
 fun EntityPayment.toDomain(entityExpense: EntityExpense?, entityPaymentMethod: EntityPaymentMethod?, entityCategory: EntityCategory?) = Payment(

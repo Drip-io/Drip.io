@@ -6,6 +6,7 @@ import com.dripio.domain.entity.Category
 import com.dripio.domain.entity.Expense
 import com.dripio.domain.entity.Payment
 import com.dripio.domain.entity.PaymentMethod
+import com.dripio.domain.repository.api.ExpenseRepository
 import com.dripio.domain.repository.api.PaymentMethodsRepository
 import com.dripio.domain.repository.api.PaymentRepository
 import com.dripio.presentation.base.vm.BaseViewModel
@@ -13,7 +14,8 @@ import java.util.*
 
 class PaymentEditorViewModel(
     private val paymentRepository: PaymentRepository,
-    private val paymentMethodsRepository: PaymentMethodsRepository
+    private val paymentMethodsRepository: PaymentMethodsRepository,
+    private val expenseRepository: ExpenseRepository
 ) : BaseViewModel() {
 
     private val _canSave = MutableLiveData(true)
@@ -31,12 +33,29 @@ class PaymentEditorViewModel(
     private val _paymentMethod = MutableLiveData<PaymentMethod?>(null)
     val paymentMethod: LiveData<PaymentMethod?> = _paymentMethod
 
+    private val _expense = MutableLiveData<Expense?>(null)
+    val expense: LiveData<Expense?> = _expense
+
     fun selectDate(date: Date) {
         _selectedDate.postValue(date)
     }
 
+    fun setExpense(expense: Expense) {
+        _expense.value = expense
+    }
+
+    fun clearExpense() {
+        _expense.value = null
+    }
+
     fun clearPaymentMethod() {
         _paymentMethod.value = null
+    }
+
+    fun fetchExpense(id: Long) {
+        launch {
+            _expense.postValue(expenseRepository.find(id))
+        }
     }
 
     fun fetchPaymentMethod(id: Long) {
@@ -98,7 +117,10 @@ class PaymentEditorViewModel(
                         lastPayment.copy(paymentValue = paymentValue)
                 }
 
-                lastPayment = if (paymentMethod != null) lastPayment.copy(paymentMethod = paymentMethod) else lastPayment.copy(paymentMethod = null)
+                lastPayment =
+                    if (paymentMethod != null) lastPayment.copy(paymentMethod = paymentMethod) else lastPayment.copy(
+                        paymentMethod = null
+                    )
                 if (category != null) lastPayment = lastPayment.copy(category = category)
                 if (paidDate != null) lastPayment = lastPayment.copy(paidAt = paidDate)
                 lastPayment = lastPayment.copy(updatedAt = Date())

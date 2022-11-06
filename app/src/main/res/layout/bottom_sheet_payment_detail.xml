@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -55,29 +56,53 @@
             app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
             app:layout_constraintStart_toEndOf="@+id/appCompatTextView3"
             app:layout_constraintTop_toTopOf="@+id/appCompatTextView3" />
+        
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tv_expense, tv_installment_status"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular"
+            android:text="@string/payment_resume_expense_template"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_installment_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular"
+            android:text="@string/payment_resume_expense_installment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_expense" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/regular"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
+            android:layout_marginTop="@dimen/medium"
+            app:layout_constraintTop_toBottomOf="@+id/tv_installment_status">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/b_delete"
                 style="@style/DangerButton"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/small"
+                android:layout_weight="1"
                 android:text="Excluir" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/b_edit"
                 style="@style/Widget.MaterialComponents.Button"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/small"
+                android:layout_weight="1"
                 android:text="Editar" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

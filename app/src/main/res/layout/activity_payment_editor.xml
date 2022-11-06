@@ -42,9 +42,9 @@
 
         <com.dripio.presentation.base.components.TextInputCurrency
             android:id="@+id/text_input_currency"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_date"
@@ -61,20 +61,32 @@
                 android:layout_height="wrap_content"
                 android:editable="false"
                 android:inputType="none" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        style="@style/ClickableText"
-        android:layout_width="wrap_content"
+    <ViewFlipper
+        android:id="@+id/view_flipper_select_expense"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium"
-        android:text="@string/select_expense"
+        android:layout_margin="@dimen/medium"
         app:layout_constraintStart_toStartOf="@+id/linearLayoutCompat2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/ClickableText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/select_expense" />
+
+        <include
+            android:id="@+id/expense_card"
+            layout="@layout/view_expense_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ViewFlipper>
 
     <ViewFlipper
         android:id="@+id/view_flipper_select_payment_method"
@@ -82,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/medium"
         android:layout_marginTop="@dimen/medium"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
+        app:layout_constraintTop_toBottomOf="@+id/view_flipper_select_expense">
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/ClickableText"
@@ -96,7 +108,6 @@
             layout="@layout/view_color_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </ViewFlipper>
 
 
