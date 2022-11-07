@@ -15,6 +15,7 @@
         <item name="android:fontFamily">@font/sora_regular</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/bright_black</item>
     </style>
 
     <style name="Theme.Dripio.NoActionBarAndStatusBar">
@@ -106,5 +107,15 @@
         <item name="strokeColor">@color/red</item>
         <item name="android:textColor">@color/red</item>
         <item name="rippleColor">@color/red</item>
+    </style>
+
+    <style name="Card">
+        <item name="android:backgroundTint">@color/dirt_white</item>
+        <item name="android:background">@drawable/round_rect</item>
+    </style>
+
+    <style name="Text.Warning" parent="Text.Bold">
+        <item name="drawableTint">@color/bright_black</item>
+        <item name="android:textColor">@color/bright_black</item>
     </style>
 </resources>

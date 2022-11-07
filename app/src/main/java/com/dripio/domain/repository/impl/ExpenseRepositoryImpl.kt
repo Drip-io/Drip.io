@@ -32,7 +32,7 @@ class ExpenseRepositoryImpl(private val appDatabase: AppDatabase) : ExpenseRepos
 
     override suspend fun deleteById(id: Long) {
         appDatabase.expenseDataAccessObject().findById(id)?.let {
-            appDatabase.expenseDataAccessObject().delete(it)
+            appDatabase.expenseDataAccessObject().delete(it.expense)
         }
     }
 

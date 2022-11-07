@@ -20,5 +20,5 @@ interface ExpenseDataAccessObject {
     fun findAll(): List<EntityExpenseWithPayments>
 
     @Query("SELECT * FROM EntityExpense where expense_id=:id")
-    fun findById(id: Long): EntityExpense?
+    fun findById(id: Long): EntityExpenseWithPayments?
 }

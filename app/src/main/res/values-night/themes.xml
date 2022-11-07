@@ -12,5 +12,16 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Card">
+        <item name="android:backgroundTint">@color/bright_black</item>
+        <item name="android:background">@drawable/round_rect</item>
+    </style>
+
+    <style name="Text.Warning" parent="Text.Bold">
+        <item name="drawableTint">@color/warning</item>
+        <item name="android:textColor">@color/warning</item>
     </style>
 </resources>

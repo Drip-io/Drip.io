@@ -7,6 +7,8 @@ import com.dripio.domain.entity.Expense
 import com.dripio.domain.entity.PaymentMethod
 import com.dripio.extensions.formatToDayMonthYear
 import com.dripio.extensions.setText
+import com.dripio.extensions.toMoneyStringWithComma
+import com.dripio.extensions.visibleOrGone
 import com.dripio.presentation.base.PAYMENT_ID
 import com.dripio.presentation.base.openExpenseList
 import com.dripio.presentation.base.openPaymentMethodList
@@ -83,7 +85,25 @@ class PaymentEditorActivity : AppCompatActivity() {
             } ?: run {
                 binding.viewFlipperSelectExpense.displayedChild = 0
             }
+            onChangeExpenseOrPaidValue()
         }
+
+        viewModel.selectedValue.observe(this) {
+            onChangeExpenseOrPaidValue()
+        }
+    }
+
+    private fun onChangeExpenseOrPaidValue() {
+        val expense = viewModel.expense.value
+        val paidValue = viewModel.selectedValue.value
+
+        if(expense == null || paidValue == null) return
+
+        val expenseInstallmentValue = expense.getInstallmentValue()
+        val isPaidValueLessThanInstallmentValue = paidValue < expenseInstallmentValue
+
+        binding.expenseCard.tvLessPaidWarning.visibleOrGone(isPaidValueLessThanInstallmentValue)
+        binding.expenseCard.tvLessPaidWarning.text = getString(R.string.less_paid_expense_installment_template, expense.getInstallmentValue().toMoneyStringWithComma())
     }
 
     private fun setViewFlipperToColorCard(paymentMethod: PaymentMethod) {

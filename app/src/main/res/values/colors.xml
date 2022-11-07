@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dirt_white">#E6E6E6</color>
+    <color name="bright_black">#1B1B1B</color>
     <color name="translucent_white">#88FFFFFF</color>
     <color name="red">#FF5252</color>
     <color name="red_bright">#FF2626</color>
@@ -18,4 +19,6 @@
 
     <color name="blue">#5269FF</color>
     <color name="blue_bright">#2655FF</color>
+
+    <color name="warning">#FFEB3B</color>
 </resources>

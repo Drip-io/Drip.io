@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val presentationModules = module {
     viewModel { PaymentEditorViewModel(get(), get(), get()) }
-    viewModel { PaymentsViewModel(get()) }
+    viewModel { PaymentsViewModel(get(), get()) }
     viewModel { PaymentMethodListViewModel(get()) }
     viewModel { PaymentMethodEditorViewModel(get()) }
     viewModel { ExpenseListViewModel(get()) }

@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
     android:gravity="center_vertical"
-    android:background="@drawable/round_rect"
-    android:backgroundTint="@color/dirt_white">
+    android:paddingBottom="@dimen/regular">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_name"
         style="@style/Text.14.Bold"
-        android:layout_weight="1"
-        android:textColor="?attr/colorSurface"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/regular"
-        tools:text="Uber"/>
+        android:layout_margin="@dimen/regular"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Uber" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_close"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_margin="@dimen/regular"
+        android:src="@drawable/ic_round_close_24"
         android:tint="?attr/colorSurface"
-        android:src="@drawable/ic_round_close_24"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tv_name, iv_close"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:visibility="gone"
+        tools:visibility="visible"
+        style="@style/Text.Warning"
+        android:id="@+id/tv_less_paid_warning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular"
+        android:layout_margin="@dimen/regular"
+        android:drawablePadding="@dimen/regular"
+        android:text="@string/less_paid_expense_installment_template"
+        app:drawableStartCompat="@drawable/ic_round_warning_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

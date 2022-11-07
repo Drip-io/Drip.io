@@ -22,4 +22,5 @@
     <string name="confirm_delete_payment_method_message">Você deseja excluir %s?</string>
     <string name="payment_resume_expense_template">Referente a despesa %s.</string>
     <string name="payment_resume_expense_installment">Status das prestações: %1$d pagas de %2$d.</string>
+    <string name="less_paid_expense_installment_template">O valor a ser pago será menor que o valor de uma parcela da despesa (R$ %1$s).</string>
 </resources>

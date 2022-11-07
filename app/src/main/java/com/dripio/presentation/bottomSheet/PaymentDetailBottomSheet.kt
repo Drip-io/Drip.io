@@ -17,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PaymentDetailBottomSheet(private val payment: Payment) : BottomSheetDialogFragment() {
 
+    private lateinit var binding: BottomSheetPaymentDetailBinding
     private val viewModel: PaymentsViewModel by sharedViewModel()
     private var onDelete: (() -> Unit)? = null
     private var onEdit: ((Payment) -> Unit)? = null
@@ -27,25 +28,49 @@ class PaymentDetailBottomSheet(private val payment: Payment) : BottomSheetDialog
         savedInstanceState: Bundle?
     ): View? {
         if(context != null) {
-            val view = BottomSheetPaymentDetailBinding.inflate(inflater)
-            view.tvPaymentName.text = payment.name
-            view.tvPaymentValue.text = payment.paymentValue.toMoneyStringWithComma()
-            view.tvPaidAt.text = payment.paidAt.formatToDayMonthYear()
-            view.bDelete.setOnClickListener {
-                deletePayment()
-                onDelete?.invoke()
-                dismiss()
-            }
-            view.bEdit.setOnClickListener {
-                onEdit?.invoke(payment)
-                dismiss()
-            }
-            view.groupExpense.visibleOrGone(payment.expense != null)
-            view.tvExpense.text = context?.getString(R.string.payment_resume_expense_template, payment.expense?.name)
-            view.tvInstallmentStatus.text = context?.getString(R.string.payment_resume_expense_installment, payment.expense?.relatedPayments?.size ?: 0, payment.expense?.installments ?: 0)
-            return view.root
+            binding = BottomSheetPaymentDetailBinding.inflate(inflater)
+            return binding.root
         }
         return null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        initObserver()
+        initViewModel()
+    }
+
+    private fun initViews() {
+        binding.tvPaymentName.text = payment.name
+        binding.tvPaymentValue.text = payment.paymentValue.toMoneyStringWithComma()
+        binding.tvPaidAt.text = payment.paidAt.formatToDayMonthYear()
+        binding.bDelete.setOnClickListener {
+            deletePayment()
+            onDelete?.invoke()
+            dismiss()
+        }
+        binding.bEdit.setOnClickListener {
+            onEdit?.invoke(payment)
+            dismiss()
+        }
+    }
+
+    private fun initObserver() {
+        viewModel.loadedExpense.observe(viewLifecycleOwner) { expense ->
+            binding.groupExpense.visibleOrGone(expense != null)
+
+            expense?.let {
+                binding.tvExpense.text = context?.getString(R.string.payment_resume_expense_template, it.name)
+                val paidInstallments = it.relatedPayments.size
+                val totalInstallments = it.installments
+                binding.tvInstallmentStatus.text = context?.getString(R.string.payment_resume_expense_installment, paidInstallments, totalInstallments)
+            }
+        }
+    }
+
+    private fun initViewModel() {
+        viewModel.loadExpenseForPaymentInfo(payment)
     }
 
     private fun deletePayment() {
